@@ -10,10 +10,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myfirstapplication.export.CallLogsExport
-import com.example.myfirstapplication.export.Export
-import com.example.myfirstapplication.export.SmsExport
-import com.example.myfirstapplication.export.ThreadsExport
+import com.example.myfirstapplication.export.*
 import com.google.android.material.snackbar.Snackbar
 
 const val EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE"
@@ -23,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     val REQUEST_PERMISSION_THREADS = 1
     val REQUEST_PERMISSION_SMS = 2
     val REQUEST_PERMISSION_CALL_LOG = 3
+    val REQUEST_PERMISSION_CALL_CONTACTS = 4
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +71,9 @@ class MainActivity : AppCompatActivity() {
             ("call_logs") -> {
                 exportObject = CallLogsExport()
             }
+            ("contacts") -> {
+                exportObject = ContactsExport()
+            }
         }
 
         if(exportObject !== null)
@@ -109,6 +110,11 @@ class MainActivity : AppCompatActivity() {
             REQUEST_PERMISSION_CALL_LOG -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     exportObject = CallLogsExport()
+                }
+            }
+            REQUEST_PERMISSION_CALL_CONTACTS -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    exportObject = ContactsExport()
                 }
             }
         }

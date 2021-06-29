@@ -29,6 +29,19 @@
             app:layout_constraintTop_toBottomOf="@+id/button3" />
 
         <Button
+            android:id="@+id/button5"
+            android:layout_width="275dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:onClick="exportData"
+            android:tag="contacts"
+            android:text="Export Contacts logs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+        <Button
             android:id="@+id/button3"
             android:layout_width="275dp"
             android:layout_height="54dp"
